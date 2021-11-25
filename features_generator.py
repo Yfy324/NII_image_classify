@@ -34,7 +34,7 @@ def val_features(dir_path, k):
     for image_path in image_paths:
         im = cv2.imread(image_path)
         im = cv2.resize(im, (300, 300))
-        # im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+        im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
         kpts = sift.detect(im)                # find the keypoints
         kpts, des = sift.compute(im, kpts)    # kp为关键点列表，des为numpy的数组，维度是关键点数目×128
         des_list.append((image_path, des))
@@ -76,7 +76,7 @@ def bof_frequency(im_features):
 
 if __name__ == '__main__':
     # train_path = '/home/yfy/Desktop/projects/Git_pj/test/SIFT-BoF/SIFT-BoF-Main/data/dc/'
-    n_features = 44
+    n_features = 15
     # b_size = 4
     # data = val_features(train_path, n_features)
     # data1 = pd.DataFrame(data)
@@ -84,4 +84,4 @@ if __name__ == '__main__':
     val_path = '/home/yfy/Desktop/projects/ImageNet/dogs_vs_cats/cats_and_dogs_small/validation/'
     data_val = val_features(val_path, n_features)
     data2 = pd.DataFrame(data_val)
-    data2.to_csv('gray_validation.csv')
+    data2.to_csv('gray_validation_15.csv')

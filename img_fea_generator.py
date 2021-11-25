@@ -105,7 +105,7 @@ def bof_frequency(im_features):
 
 if __name__ == '__main__':
     train_path = '/home/yfy/Desktop/projects/ImageNet/dogs_vs_cats/cats_and_dogs_small/train/'
-    n_features = 44
+    n_features = 15
     b_size = 5
     data = sift_bof_features(train_path, n_features, b_size)
     data1 = pd.DataFrame(data)
