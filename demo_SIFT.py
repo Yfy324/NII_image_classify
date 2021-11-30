@@ -26,7 +26,7 @@ def cv_img_sift(path):
 def read_img(path):
     im = cv2.imread(path)
     im = cv2.resize(im, (256, 256))
-    im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    # im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     return im
 
 
@@ -52,12 +52,12 @@ def img_descriptor(path, n_batch):
         kp, des = sift.compute(images[i], kp)
         des_list.append(des)
 
-        img = cv2.drawKeypoints(images[i], kp, image)  # draw the keypoints
-        cv2.imshow('sp{}'.format(i), img)
-        cv2.waitKey(0)
+        # img = cv2.drawKeypoints(images[i], kp, image)  # draw the keypoints
+        # cv2.imshow('sp{}'.format(i), img)
+        # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-    return des_list[0], des_list[1], des_list[2], des_list[3]
-    # return des_list[0]
+    # return des_list[0], des_list[1], des_list[2], des_list[3]
+    return des_list
 
 
 if __name__ == '__main__':
@@ -65,12 +65,8 @@ if __name__ == '__main__':
     # des_list = []
     # for i in range(4):
     #     des_list.append(des_l[i])
-    #
-    # des_2 = img_descriptor('1.jpg', 4)
-    # for i in range(4):
-    #     des_list.append(des_2[i])
 
-    # im = read_img('1.jpg')
-    # ims = batch_aug(4, im)
+    im = read_img('1.jpg')
+    ims = batch_aug(4, im)
     # cv_img_sift('1.jpg')
-    img_descriptor('1.jpg', 4)
+    a = img_descriptor('1.jpg', 4)
