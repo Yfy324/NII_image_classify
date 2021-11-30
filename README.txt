@@ -1,0 +1,1 @@
+This repository is for my SSP project at NII. The topic of the project is to classify images by feature engineering, with the assistance of SIFT and BoF algorithms.
