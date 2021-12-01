@@ -86,17 +86,6 @@ def data_merge(image_classes, image_paths, img_features):
     return img_data
 
 
-if __name__ == '__main__':
-    dic_path = '/home/yfy/Desktop/projects/ImageNet/dogs_vs_cats/cats_and_dogs_small/dic/'
-    n_features = 64
-    im_paths, im_classes = path_label(dic_path, 1)
-    describe, dic, d_list = sift_descriptor_voc(im_paths, n_features)
-    im_features, im_distribution = bof_features(im_paths, dic, d_list, n_features, 1)
-    im_data = data_merge(im_classes, im_paths, im_features)
-    # data2 = pd.DataFrame(data_val)
-    # data2.to_csv('gray_validation_40.csv')
-    joblib.dump((im_distribution, n_features, dic), "bof_features.pkl", compress=3)
-
 
 
 

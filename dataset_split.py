@@ -72,9 +72,3 @@ def img_split(train_path, training_name):
     class_path = imlist(src)
     image_paths += class_path
     return image_paths
-
-
-if __name__ == '__main__':
-    original = '/home/yfy/Desktop/projects/ImageNet/dogs_vs_cats/'
-    base = '/home/yfy/Desktop/projects/ImageNet/dogs_vs_cats/cats_and_dogs_small/'
-    dir_creat(original, base)
