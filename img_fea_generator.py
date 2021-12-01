@@ -17,7 +17,7 @@ def read_img(path):
 
 
 def batch_aug(k, img):
-    ia.seed(0.5)
+    ia.seed(1)
     imgs = [img, img, img, img]  # 改
     seq = iaa.Sequential([
         iaa.Affine(rotate=(-25, 25)),
