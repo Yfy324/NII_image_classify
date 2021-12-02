@@ -1,11 +1,8 @@
 import cv2
 import numpy as np
 from scipy.cluster.vq import *
-import pandas as pd
 import imgaug as ia
 from imgaug import augmenters as iaa
-import joblib
-from sift_bof import path_label, data_merge
 from sklearn import preprocessing
 
 
