@@ -74,7 +74,7 @@ def batch_aug(k, path):
     for i1 in range(k):
         imgs.append(img)  # 改
     seq = iaa.Sequential([
-        iaa.Affine(rotate=(-25, 25)),
+        iaa.Affine(rotate=(-40, 30)),
         # iaa.Affine(rotate=(-25, 25), translate_percent=0.1),
         iaa.Crop(percent=(0, 0.3))
     ])
@@ -100,7 +100,7 @@ for m1 in range(len(paths_tra1)):
     train_data.extend(bow_features(paths_tra1[m1]))
     train_labels.append(1)
     ims = batch_aug(n, paths_tra1[m1])
-    for k1 in range(2):
+    for k1 in range(n):
         train_data.extend(aug_bow_features(ims[k1]))
         train_labels.append(1)
 
@@ -108,17 +108,25 @@ for m2 in range(len(paths_tra2)):
     train_data.extend(bow_features(paths_tra2[m2]))
     train_labels.append(2)
     ims = batch_aug(n, paths_tra2[m2])
-    for k2 in range(2):
-        train_data.extend(aug_bow_features(ims[k2]))
-        train_labels.append(2)
+    for k2 in range(n):
+        if aug_bow_features(ims[k2]) is None:
+            train_data.extend(train_data[len(train_data)-1])
+            train_labels.append(2)
+        else:
+            train_data.extend(aug_bow_features(ims[k2]))
+            train_labels.append(2)
 
 for m3 in range(len(paths_tra1)):
     train_data.extend(bow_features(paths_tra3[m3]))
     train_labels.append(3)
     ims = batch_aug(n, paths_tra3[m3])
-    for k3 in range(2):
-        train_data.extend(aug_bow_features(ims[k3]))
-        train_labels.append(3)
+    for k3 in range(n):
+        if aug_bow_features(ims[k3]) is None:
+            train_data.extend(train_data[len(train_data)-1])
+            train_labels.append(3)
+        else:
+            train_data.extend(aug_bow_features(ims[k3]))
+            train_labels.append(3)
 
 
 # val_data, val_labels = [], []
